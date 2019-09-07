@@ -93,9 +93,9 @@ public final class VanishCommand implements CommandExecutor {
         // Check if I'm vanished
         if (goal.equalsIgnoreCase("check")) {
             if (this.plugin.getManager().isVanished(player)) {
-                player.sendMessage(ChatColor.DARK_AQUA + "You are invisible.");
+                player.sendMessage(ChatColor.DARK_AQUA + "あなたは Vanish しています。");
             } else {
-                player.sendMessage(ChatColor.DARK_AQUA + "You are visible.");
+                player.sendMessage(ChatColor.DARK_AQUA + "あなたは Vanish していません。");
             }
             return true;
         }
@@ -219,7 +219,7 @@ public final class VanishCommand implements CommandExecutor {
                 if (!this.plugin.getManager().isVanished(player)) {
                     this.plugin.getManager().toggleVanish(player);
                 } else {
-                    player.sendMessage(ChatColor.RED + "Already invisible :)");
+                    player.sendMessage(ChatColor.RED + "既に Vanish しています (*´ω｀*)");
                 }
                 boolean forced = false;
                 if ((args.length > 1) && (args[1].equalsIgnoreCase("f") || args[1].equalsIgnoreCase("force"))) {
@@ -236,7 +236,7 @@ public final class VanishCommand implements CommandExecutor {
                 if (this.plugin.getManager().isVanished(player)) {
                     this.plugin.getManager().toggleVanish(player);
                 } else {
-                    player.sendMessage(ChatColor.RED + "Already visible :)");
+                    player.sendMessage(ChatColor.RED + "既に Vanish していない状態です (*´ω｀*)");
                 }
                 boolean forced = false;
                 if ((args.length > 1) && (args[1].equalsIgnoreCase("f") || args[1].equalsIgnoreCase("force"))) {
@@ -276,7 +276,7 @@ public final class VanishCommand implements CommandExecutor {
     }
 
     private void denied(CommandSender sender) {
-        sender.sendMessage(ChatColor.AQUA + "[Vanish] " + ChatColor.DARK_AQUA + "Access denied.");
+        sender.sendMessage(ChatColor.AQUA + "[Vanish] " + ChatColor.DARK_AQUA + "権限がありません。");
     }
 
     private void toggle(Player player, String toggle) {
@@ -328,16 +328,16 @@ public final class VanishCommand implements CommandExecutor {
             message.append("bats effect");
         }
         if (message.length() > 0) {
-            message.insert(0, ChatColor.DARK_AQUA + "Status: ");
+            message.insert(0, ChatColor.DARK_AQUA + "状態: ");
             message.append(": ");
             if (status) {
-                message.append("enabled");
+                message.append("有効");
             } else {
-                message.append("disabled");
+                message.append("無効");
             }
             player.sendMessage(message.toString());
         } else if (VanishPerms.canVanish(player)) {
-            player.sendMessage(ChatColor.DARK_AQUA + "You can't toggle that!");
+            player.sendMessage(ChatColor.DARK_AQUA + "あなたは切り替えられません！");
         }
     }
 }
